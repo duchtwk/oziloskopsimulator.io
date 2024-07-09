@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimeter</title>
+    <style>
+        .image-container {
+            display: flex;
+            flex-direction: column; /* Ermöglicht die Platzierung der Überschrift über dem Bild */
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 100vh; /* Volle Höhe des Viewports */
+        }
+
+        .header {
+            font-size: 48px; /* Schriftgröße der Überschrift */
+            font-family: Arial, sans-serif; /* Schriftart der Überschrift */
+            margin-bottom: 30px; /* Abstand zwischen Überschrift und Bild */
+        }
+
+        .back-button {
+            display: none; /* Start hidden */
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            z-index: 10; /* Ensure the button is on top */
+        }
+
+        #mainImage, .multiple-images img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .multiple-images {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .multiple-images img {
+            width: 48%; /* Zwei Bilder pro Zeile */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <div class="header" id="header">Oziloskop</div> <!-- Überschrift -->
+        <img src="oziloskopStart.jpg" usemap="#image-map" id="mainImage">
+        <div class="back-button" id="backButton" onclick="handleBackClick()">Back</div>
+        <div class="multiple-images" id="multipleImages">
+            <img src="oziloskopPlus.jpg" alt="Bild 1">
+            <img src="oziloskopMinus.jpg" alt="Bild 2">
+            <img src="oziloskopMahl.jpg" alt="Bild 3">
+            <img src="oziloskopDurch.jpg" alt="Bild 4">
+        </div>
+    </div>
+
+    <map name="image-map">
+        <area target="" alt="Knopf 1" title="Knopf 1" href="#" coords="548,265,28" shape="circle" onclick="handleClick(event, 'oziloskopVerkleinert.jpg')">
+        <area target="" alt="Knopf 2" title="Knopf 2" href="#" coords="703,116,21" shape="circle" onclick="handleClick(event, 'oziloskopWaves.jpg')">
+        <area target="" alt="Knopf 3" title="Knopf 3" href="#" coords="764,53,22" shape="circle" onclick="handleClick(event, 'oziloskopTriggern.jpg')">
+        <area target="" alt="Knopf 4" title="Knopf 4" href="#" coords="601,220,575,199" shape="rect" onclick="handleKnopf4Click(event)">
+    </map>
+
+    <script>
+        function handleClick(event, newSrc) {
+            event.preventDefault(); // Verhindert das Standardverhalten des Links
+            changeImage(newSrc);
+            toggleMultipleImages(false); // Versteckt die vier Bilder, wenn ein anderer Knopf geklickt wird
+            toggleHeader(newSrc === 'oziloskopStart.jpg'); // Zeigt die Überschrift nur bei Startbild an
+        }
+
+        function handleKnopf4Click(event) {
+            event.preventDefault(); // Verhindert das Standardverhalten des Links
+            toggleMultipleImages(true);
+            toggleBackButton(true); // Zeigt die "Back"-Taste an
+            toggleHeader(false); // Versteckt die Überschrift
+        }
+
+        function handleBackClick() {
+            document.getElementById('mainImage').src = 'oziloskopStart.jpg';
+            toggleMultipleImages(false);
+            toggleBackButton(false);
+            toggleHeader(true); // Zeigt die Überschrift an
+        }
+
+        function changeImage(newSrc) {
+            document.getElementById('mainImage').src = newSrc;
+            toggleBackButton(newSrc !== 'oziloskopStart.jpg');
+        }
+
+        function toggleMultipleImages(show) {
+            const multipleImages = document.getElementById('multipleImages');
+            multipleImages.style.display = show ? 'flex' : 'none';
+            document.getElementById('mainImage').style.display = show ? 'none' : 'block';
+        }
+
+        function toggleBackButton(show) {
+            const backButton = document.getElementById('backButton');
+            backButton.style.display = show ? 'block' : 'none';
+        }
+
+        function toggleHeader(show) {
+            const header = document.getElementById('header');
+            header.style.display = show ? 'block' : 'none';
+        }
+    </script>
+
+</body>
+</html>
