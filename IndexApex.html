@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimeter</title>
+    <style>
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 100vh;
+        }
+
+        .header {
+            font-size: 48px;
+            font-family: Arial, sans-serif;
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        #mainImage, .multiple-images img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .multiple-images {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .multiple-images img {
+            width: 48%;
+        }
+
+       
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <div class="header" id="header">Oszilloskop</div>
+        <img src="Start.png" usemap="#image-map" id="mainImage">
+        <div class="back-button" id="backButton" onclick="handleBackClick()">Back</div>
+
+        
+
+       
+
+       
+
+    <map name="image-map">
+        <area target="" alt="Vertikal1Rechts" title="Vertikal1Rechts" href="#" coords="559,236 560,271 576,255" shape="poly" onclick="handleClick(event, 'Vertikal1Rechts.png')">
+        <area target="" alt="Vertikal1Links" title="Vertikal1Links" href="#" coords="559,236 559,273 537,255" shape="poly" onclick="handleClick(event, 'Vertikal1Links.png')">
+        <area target="" alt="Math" title="Math" href="#" coords="578,201,604,221" shape="rect" onclick="handleClick(event, 'MathPlus.png')">
+        <area target="" alt="Default" title="Default" href="#" coords="577,72,600,86" shape="rect" onclick="handleClick(event, 'Default.png')">
+        <area target="" alt="Utility" title="Utility" href="#" coords="534,100,563,119" shape="rect" onclick="handleClick(event, 'Utility.png')">
+        <area target="" alt="Cursor" title="Cursor" href="#" coords="576,103,600,117" shape="rect" onclick="handleClick(event, 'Cursor.png')">
+        <area target="" alt="RunStop" title="RunStop" href="#" coords="778,73,749,91" shape="rect" onclick="handleClick(event, 'RunStop.png')">
+        <area target="" alt="Display" title="Display" href="#" coords="613,131,642,148" shape="rect" onclick="handleClick(event, 'Display.png')">
+        <area target="" alt="Vertikal2Rechts" title="Vertikal2Rechts" href="#" coords="560,169 560,189 569,178" shape="poly" onclick="handleClick(event, 'Vertikal2Rechts.png')">
+        <area target="" alt="Vertikal2Links" title="Vertikal2Links" href="#" coords="557,163 561,191 548,182" shape="poly" onclick="handleClick(event, 'Vertikal2Links.png')">
+        <area target="" alt="Autoscale" title="Autoscale" href="#" coords="760,130,780,150" shape="rect" onclick="handleClick(event, 'Autoscale.png')">
+        <area target="" alt="Trigger" title="Trigger" href="#" coords="720,79,11" shape="circle" onclick="handleClick(event, 'Trigger.png')">
+        <area target="" alt="Triggermenü" title="Triggermenü" href="#" coords="706,105,733,119" shape="rect" onclick="handleClick(event, 'Triggermenü.png')">
+        <area target="" alt="Horizontal1Rechts" title="Horizontal1Rechts" href="#" coords="675,66 685,78,676,89" shape="poly" onclick="handleClick(event, 'Horizontal1Rechts.png')">
+        <area target="" alt="Horizontal1Links" title="Horizontal1Links" href="#" coords="673,66 673,89 ,664,78" shape="poly" onclick="handleClick(event, 'Horizontal1Links.png')">
+        <area target="" alt="Horizontal2Rechts" title="Horizontal2Rechts" href="#" coords="676,117 677,137 688,128" shape="poly" onclick="handleClick(event, 'Horizontal2Rechts.png')">
+        <area target="" alt="Horizontal2Links" title="Horizontal2Links" href="#" coords="673,116 674,136 666,127" shape="poly" onclick="handleClick(event, 'Horizontal2Links.png')">
+        <area target="" alt="Maß" title="Maß" href="#" coords="616,103,639,120" shape="rect" onclick="handleClick(event, 'Maß.png')">
+        <area target="" alt="Lösung V1,V2" title="Lösung V1,V2" href="#" coords="613,197,632,225" shape="rect" onclick="handleClick(event, 'Angry man.jpg')">
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'Hinweis.png')">
+    </map> 
+
+    
+    <map name="image-map-MathMinus" id="image-map-MathMinus">
+        <area target="" alt="F-Einstelltaste" title="F-Einstelltaste" href="#" coords="481,109,495,129" shape="rect" onclick="handleClick(event, 'MathMinus.png')">
+
+    </map>
+
+    <map name="image-map-MathMahl" id="image-map-MathMahl">
+        <area target="" alt="F-Einstelltaste" title="F-Einstelltaste" href="#" coords="481,109,495,129" shape="rect" onclick="handleClick(event,'MathMahl.png')">
+        
+    </map>
+
+    <map name="image-map-MathDurch" id="image-map-MathDurch">
+        <area target="" alt="F-Einstelltaste" title="F-Einstelltaste" href="#" coords="481,109,495,129" shape="rect" onclick="handleClick(event, 'MathDurch.png')">
+        
+    </map>
+
+    
+
+    <script>
+        function handleClick(event, newSrc) {
+            event.preventDefault(); // Verhindert das Standardverhalten des Links
+            updateHeader(newSrc); // Setze die Überschrift basierend auf dem Bild
+            changeImage(newSrc);
+            
+            
+
+            
+
+          
+        }
+
+        function toggleMathImageMap(show) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.useMap = show ? '#math-image-map' : '#image-map'; // Wechselt zwischen den Image-Maps
+        }
+
+       
+
+        function handleBackClick() {
+            changeImage('Start.png');
+            resetHeader(); 
+            toggleMultipleImages(false);
+            toggleBackButton(false);
+            toggleHeader(true); 
+            toggleMathImageMap(false); 
+            
+           
+        }
+
+        function resetHeader() {
+        const header = document.getElementById('header');
+        header.innerText = 'Oszilloskop';
+        }
+
+        function changeImage(newSrc) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = newSrc;
+            toggleBackButton(newSrc !== 'Start.png');
+            toggleImagemap(newSrc);
+            if (newSrc === 'Start.png') {
+                resetHeader(); 
+            } else {
+                toggleTitle(newSrc === 'Start.png');
+            }
+        }
+
+        function toggleImagemap(newSrc) {
+            const mainImage = document.getElementById('mainImage');
+            document.body.classList.remove('MathMinus-map-active', 'MathMahl-map-active', 'MathDurch-map-active');
+            if (newSrc === 'MathPlus.png') {
+                mainImage.useMap = '#image-map-MathMinus';
+                document.body.classList.add('MathMinus-map-active');
+            } else if (newSrc === 'MathMinus.png') {
+                mainImage.useMap = '#image-map-MathMahl';
+                document.body.classList.add('MathMahl-map-active');
+            } else if (newSrc === 'MathMahl.png') {
+                mainImage.useMap = '#image-map-MathDurch';
+                document.body.classList.add('MathDurch-map-active');
+            } else {
+                mainImage.useMap = '#image-map';
+            }
+        }
+
+        
+
+        function toggleBackButton(show) {
+            const backButton = document.getElementById('backButton');
+            backButton.style.display = show ? 'block' : 'none';
+        }
+
+        function toggleHeader(show) {
+            const header = document.getElementById('header');
+            header.style.display = show ? 'block' : 'none';
+        }
+
+        function updateHeader(newSrc) {
+            const header = document.getElementById('header');
+            const titles = {
+                'Vertikal1Rechts.png': 'Vertikal 1 ',
+                'Vertikal1Links.png': 'Vertikal 1 ',
+                'MathPlus.png': 'Addition',
+                'Default.png': 'Default',
+                'Utility.png': 'Utility',
+                'Cursor.png': 'Cursor',
+                'RunStop.png': 'Run/Stop',
+                'Display.png': 'Display',
+                'Vertikal2Rechts.png': 'Vertikal 2 ',
+                'Vertikal2Links.png': 'Vertikal 2 ',
+                'Autoscale.png': 'Autoscale',
+                'Trigger.png': 'Trigger',
+                'Triggermenü.png': 'Triggermenü',
+                'Horizontal1Rechts.png': 'Horizontal 1 ',
+                'Horizontal1Links.png': 'Horizontal 1 ',
+                'Horizontal2Rechts.png': 'Horizontal 2 ',
+                'Horizontal2Links.png': 'Horizontal 2 ',
+                'Maß.png': 'Maß',
+                'MathMinus.png': 'Subtraktion ',
+                'MathMahl.png': 'Multiplikation ',
+                'MathDurch.png': 'Division',
+                'Angry man.jpg': 'Lösung V1,V2',
+                'Hinweis.png': 'Hinweis',
+                
+
+                
+            };
+            header.innerText = titles[newSrc] || 'Oszilloskop'; // Standardüberschrift
+        }
+
+       
+
+        
+
+       
+    </script>
+
+</body>
+</html>
