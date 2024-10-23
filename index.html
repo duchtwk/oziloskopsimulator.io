@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oszilloskop</title>
+    <title>Multimeter</title>
     <style>
         .image-container {
             display: flex;
@@ -48,8 +48,6 @@
         .multiple-images img {
             width: 48%;
         }
-
-       
     </style>
 </head>
 <body>
@@ -58,18 +56,13 @@
         <div class="header" id="header">Oszilloskop</div>
         <img src="Start.png" usemap="#image-map" id="mainImage">
         <div class="back-button" id="backButton" onclick="handleBackClick()">Back</div>
-
-        
-
-       
-
-       
+    </div>
 
     <map name="image-map">
         <area target="" alt="Vertikal1Rechts" title="Vertikal1Rechts" href="#" coords="559,236 560,271 576,255" shape="poly" onclick="handleClick(event, 'Vertikal1Rechts.png')">
         <area target="" alt="Vertikal1Links" title="Vertikal1Links" href="#" coords="559,236 559,273 537,255" shape="poly" onclick="handleClick(event, 'Vertikal1Links.png')">
         <area target="" alt="Math" title="Math" href="#" coords="578,201,604,221" shape="rect" onclick="handleClick(event, 'MathPlus.png')">
-        <area target="" alt="Default" title="Default" href="#" coords="577,72,600,86" shape="rect" onclick="handleClick(event, 'Default.png')">
+        <area target="" alt="Default" title="Default" href="#" coords="577,72,600,86" shape="rect" onclick="handleClick(event, 'Angry man 2.jpg')">
         <area target="" alt="Utility" title="Utility" href="#" coords="534,100,563,119" shape="rect" onclick="handleClick(event, 'Utility.png')">
         <area target="" alt="Cursor" title="Cursor" href="#" coords="576,103,600,117" shape="rect" onclick="handleClick(event, 'Cursor.png')">
         <area target="" alt="RunStop" title="RunStop" href="#" coords="778,73,749,91" shape="rect" onclick="handleClick(event, 'RunStop.png')">
@@ -83,63 +76,88 @@
         <area target="" alt="Horizontal1Links" title="Horizontal1Links" href="#" coords="673,66 673,89 ,664,78" shape="poly" onclick="handleClick(event, 'Horizontal1Links.png')">
         <area target="" alt="Horizontal2Rechts" title="Horizontal2Rechts" href="#" coords="676,117 677,137 688,128" shape="poly" onclick="handleClick(event, 'Horizontal2Rechts.png')">
         <area target="" alt="Horizontal2Links" title="Horizontal2Links" href="#" coords="673,116 674,136 666,127" shape="poly" onclick="handleClick(event, 'Horizontal2Links.png')">
-        <area target="" alt="Maß" title="Maß" href="#" coords="616,103,639,120" shape="rect" onclick="handleClick(event, 'Maß.png')">
+        <area target="" alt="Measure" title="Measure" href="#" coords="616,103,639,120" shape="rect" onclick="handleClick(event, 'Maß.png')">
         <area target="" alt="Lösung V1,V2" title="Lösung V1,V2" href="#" coords="613,197,632,225" shape="rect" onclick="handleClick(event, 'Angry man.jpg')">
-        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'Hinweis.png')">
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'HinweisStart.png')">
     </map> 
 
-    
     <map name="image-map-MathMinus" id="image-map-MathMinus">
         <area target="" alt="F-Einstelltaste" title="F-Einstelltaste" href="#" coords="481,109,495,129" shape="rect" onclick="handleClick(event, 'MathMinus.png')">
-
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'HinweisMath.png')">
     </map>
 
     <map name="image-map-MathMahl" id="image-map-MathMahl">
         <area target="" alt="F-Einstelltaste" title="F-Einstelltaste" href="#" coords="481,109,495,129" shape="rect" onclick="handleClick(event,'MathMahl.png')">
-        
     </map>
 
     <map name="image-map-MathDurch" id="image-map-MathDurch">
         <area target="" alt="F-Einstelltaste" title="F-Einstelltaste" href="#" coords="481,109,495,129" shape="rect" onclick="handleClick(event, 'MathDurch.png')">
+    </map>
+
+    <map name="image-map-Cursor1" id="image-map-Cursor1">
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'HinweisStart.png')">
         
     </map>
 
-    
+    <map name="image-map-Cursor2" id="image-map-Cursor2">
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'HinweisAutoscale.png')">
+        
+    </map>
+
+    <map name="image-map-Cursor3" id="image-map-Cursor3">
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'HinweisHorizontal1Links.png')">
+        
+    </map>
+
+    <map name="image-map-Cursor4" id="image-map-Cursor4">
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'HinweisHorizontal1Rechts.png')">
+        
+    </map>
+
+   
+
+    <map name="image-map-Cursor6" id="image-map-Cursor6">
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'HinweisRunStop.png')">
+        
+    </map>
+
+    <map name="image-map-Cursor7" id="image-map-Cursor7">
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'HinweisTriggern.png')">
+        
+    </map>
+
+    <map name="image-map-Cursor8" id="image-map-Cursor8">
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'HinweisMeasure.png')">
+        
+    </map>
+
+    <map name="image-map-Cursor9" id="image-map-Cursor9">
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'HinweisVertikal2Rechts.png')">
+        
+    </map>
+
+    <map name="image-map-Cursor10" id="image-map-Cursor10">
+        <area target="" alt="Hinweis" title="Hinweis" href="#" coords="368,396,495,477" shape="rect" onclick="handleClick(event, 'HinweisVertikal2Links.png')">
+        
+    </map>
+
 
     <script>
         function handleClick(event, newSrc) {
-            event.preventDefault(); // Verhindert das Standardverhalten des Links
-            updateHeader(newSrc); // Setze die Überschrift basierend auf dem Bild
+            event.preventDefault(); // Prevent default link behavior
+            updateHeader(newSrc); // Set header based on image
             changeImage(newSrc);
-            
-            
-
-            
-
-          
         }
-
-        function toggleMathImageMap(show) {
-            const mainImage = document.getElementById('mainImage');
-            mainImage.useMap = show ? '#math-image-map' : '#image-map'; // Wechselt zwischen den Image-Maps
-        }
-
-       
 
         function handleBackClick() {
             changeImage('Start.png');
             resetHeader(); 
-            toggleMultipleImages(false);
             toggleBackButton(false);
-            toggleHeader(true); 
-            toggleMathImageMap(false); 
-            
-           
         }
 
         function resetHeader() {
-        const header = document.getElementById('header');
-        header.innerText = 'Oszilloskop';
+            const header = document.getElementById('header');
+            header.innerText = 'Oszilloskop';
         }
 
         function changeImage(newSrc) {
@@ -147,40 +165,58 @@
             mainImage.src = newSrc;
             toggleBackButton(newSrc !== 'Start.png');
             toggleImagemap(newSrc);
-            if (newSrc === 'Start.png') {
-                resetHeader(); 
-            } else {
-                toggleTitle(newSrc === 'Start.png');
-            }
         }
 
         function toggleImagemap(newSrc) {
             const mainImage = document.getElementById('mainImage');
-            document.body.classList.remove('MathMinus-map-active', 'MathMahl-map-active', 'MathDurch-map-active');
-            if (newSrc === 'MathPlus.png') {
-                mainImage.useMap = '#image-map-MathMinus';
-                document.body.classList.add('MathMinus-map-active');
-            } else if (newSrc === 'MathMinus.png') {
-                mainImage.useMap = '#image-map-MathMahl';
-                document.body.classList.add('MathMahl-map-active');
-            } else if (newSrc === 'MathMahl.png') {
-                mainImage.useMap = '#image-map-MathDurch';
-                document.body.classList.add('MathDurch-map-active');
-            } else {
+
+            // Reset to the default imagemap only for Start.png
+            if (newSrc === 'Start.png') {
                 mainImage.useMap = '#image-map';
+            } else {
+                // Set specific imagemap for other images
+                if (newSrc === 'MathPlus.png') {
+                    mainImage.useMap = '#image-map-MathMinus','#image-map-Cursor5';
+                } else if (newSrc === 'MathMinus.png') {
+                    mainImage.useMap = '#image-map-MathMahl';
+                } else if (newSrc === 'MathMahl.png') {
+                    mainImage.useMap = '#image-map-MathDurch';
+                } else if (newSrc === 'Cursor.png') {
+                    mainImage.useMap = '#image-map-Cursor';
+                } else if (newSrc === 'Autoscale.png') {
+                    mainImage.useMap = '#image-map-Cursor2';
+                    document.body.classList.add('Cursor2-map-active');
+                } else if (newSrc === 'Horizontal1Links.png') {
+                    mainImage.useMap = '#image-map-Cursor3';
+                    document.body.classList.add('Cursor3-map-active');
+                } else if (newSrc === 'Horizontal1Rechts.png') {
+                    mainImage.useMap = '#image-map-Cursor4';
+                    document.body.classList.add('Cursor4-map-active');
+                } else if (newSrc === 'RunStop.png') {
+                    mainImage.useMap = '#image-map-Cursor6';
+                    document.body.classList.add('Cursor6-map-active');
+                } else if (newSrc === 'Trigger.png') {
+                    mainImage.useMap = '#image-map-Cursor7';
+                    document.body.classList.add('Cursor7-map-active');
+                } else if (newSrc === 'Maß.png') {
+                    mainImage.useMap = '#image-map-Cursor8';
+                    document.body.classList.add('Cursor8-map-active');
+                } else if (newSrc === 'Vertikal2Rechts.png') {
+                    mainImage.useMap = '#image-map-Cursor9';
+                    document.body.classList.add('Cursor9-map-active');
+                } else if (newSrc === 'Vertikal2Links.png') {
+                    mainImage.useMap = '#image-map-Cursor10';
+                    document.body.classList.add('Cursor10-map-active'); 
+                } else {
+                    // Reset to no imagemap for other images
+                    mainImage.useMap = '';
+                }
             }
         }
-
-        
 
         function toggleBackButton(show) {
             const backButton = document.getElementById('backButton');
             backButton.style.display = show ? 'block' : 'none';
-        }
-
-        function toggleHeader(show) {
-            const header = document.getElementById('header');
-            header.style.display = show ? 'block' : 'none';
         }
 
         function updateHeader(newSrc) {
@@ -203,24 +239,26 @@
                 'Horizontal1Links.png': 'Horizontal 1 ',
                 'Horizontal2Rechts.png': 'Horizontal 2 ',
                 'Horizontal2Links.png': 'Horizontal 2 ',
-                'Maß.png': 'Maß',
+                'Maß.png': 'Measure',
                 'MathMinus.png': 'Subtraktion ',
                 'MathMahl.png': 'Multiplikation ',
                 'MathDurch.png': 'Division',
                 'Angry man.jpg': 'Lösung V1,V2',
-                'Hinweis.png': 'Hinweis',
-                
+                'Angry man 2.jpg': 'Default VERMEIDEN',
+                'HinweisStart.png': 'Hinweis',
+                'HinweisAutoscale.png': 'Autoscale',
+                'HinweisRunStop.png': 'RunStop',
+                'HinweisTriggern.png': 'Trigger',
+                'HinweisMeasure.png': 'Measure',
+                'HinweisMath.png': 'Math',
+                'HinweisHorizontal1Rechts.png': 'Horizontal1Rechts',
+                'HinweisHorizontal1Links.png': 'Horizontal1Links',
+                'HinweisVertikal2Links.png': 'Vertikal2Links',
+                'HinweisVertikal2Rechts.png': 'Vertikal2Rechts',
 
-                
             };
-            header.innerText = titles[newSrc] || 'Oszilloskop'; // Standardüberschrift
+            header.innerText = titles[newSrc] || 'Oszilloskop'; // Default title
         }
-
-       
-
-        
-
-       
     </script>
 
 </body>
